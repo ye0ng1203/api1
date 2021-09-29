@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api1-deploy
+  labels:
+    app: python-api1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-api1
+  template:
+    metadata:
+      labels:
+        app: python-api1
+    spec:
+      containers:
+      - name: api1-container
+        image: myregistry.images.io:30000/python-api1:0.0
+        ports:
+        - containerPort: 8000
